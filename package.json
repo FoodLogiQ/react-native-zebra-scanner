@@ -1,0 +1,22 @@
+{
+  "name": "@nextup/react-native-zebra-scanner",
+  "description": "A barcode scanner for Zebra handheld devices like Zebra CT57X",
+  "version": "1.3.0",
+  "main": "index.js",
+  "author": "Roel van den Boom <info@inogo.nl>",
+  "repository": "@nextup/react-native-zebra-scanner",
+  "keywords": [
+    "zebra",
+    "barcode",
+    "scanner"
+  ],
+  "engines": {
+    "node": ">=4.0"
+  },
+  "files": [
+    "android",
+    "index.js"
+  ],
+  "license": "ISC",
+  "private": false
+}
