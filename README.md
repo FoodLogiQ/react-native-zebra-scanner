@@ -16,13 +16,22 @@ To install the native dependencies:
 react-native link react-native-zebra-scanner
 ```
 
+Add the following to your AndroidManifest.xml so that it works on Android 11 and newer:
+
+```
+<queries>
+  <package android:name="com.symbol.emdk.emdkservice" />
+</queries>
+```
+
+
 ## Usage
 
 The barcode reader needs to be "claimed" by your application; meanwhile no other application can use it. You can do that like this:
 
 ```js
 ZebraScanner.startReader().then((claimed) => {
-  console.log(claimed ? "Barcode reader is claimed" : "Barcode reader is busy");
+    console.log(claimed ? 'Barcode reader is claimed' : 'Barcode reader is busy');
 });
 ```
 
@@ -30,19 +39,19 @@ To free the claim and stop the reader, also freeing up resources:
 
 ```js
 ZebraScanner.stopReader().then(() => {
-  console.log("Freedom!");
+    console.log('Freedom!');
 });
 ```
 
 To get events from the barcode scanner:
 
 ```js
-ZebraScanner.on("barcodeReadSuccess", (event) => {
-  console.log("Received data", event);
+ZebraScanner.on('barcodeReadSuccess', event => {
+    console.log('Received data', event);
 });
 
-ZebraScanner.on("barcodeReadFail", () => {
-  console.log("Barcode read failed");
+ZebraScanner.on('barcodeReadFail', () => {
+    console.log('Barcode read failed');
 });
 ```
 

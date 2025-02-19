@@ -167,12 +167,10 @@ public class ZebraScannerModule extends ReactContextBaseJavaModule implements EM
         }
     }
 
-    public void onBarcodeEvent(String barcode, String type) {
+    public void onBarcodeEvent(String barcode) {
         updateStatus("Barcode scan read: " + barcode);
         WritableMap params = Arguments.createMap();
         params.putString("data", barcode);
-        params.putString("type", type);  
-
         sendEvent(BARCODE_READ_SUCCESS, params);
     }
 
@@ -266,7 +264,7 @@ public class ZebraScannerModule extends ReactContextBaseJavaModule implements EM
         if ((scanDataCollection != null) && (scanDataCollection.getResult() == ScannerResults.SUCCESS)) {
             ArrayList<ScanDataCollection.ScanData> scanData = scanDataCollection.getScanData();
             for (ScanDataCollection.ScanData data : scanData) {
-                onBarcodeEvent(data.getData(), "" + data.getLabelType());;
+                onBarcodeEvent(data.getData());
             }
         }
     }

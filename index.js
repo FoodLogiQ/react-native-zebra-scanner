@@ -7,8 +7,6 @@ const allowedEvents = [
   ZebraScanner.BARCODE_READ_FAIL,
 ];
 
-let listener = null;
-
 /**
  * Listen for available events
  * @param  {String} eventName Name of event one of barcodeReadSuccess, barcodeReadFail
@@ -18,7 +16,7 @@ let listener = null;
   if (!allowedEvents.includes(eventName)) {
     throw new Error(`Event name ${eventName} is not a supported event.`);
   }
-  listener = DeviceEventEmitter.addListener(eventName, handler);
+  DeviceEventEmitter.addListener(eventName, handler);
 };
 
 /**
@@ -30,10 +28,7 @@ let listener = null;
   if (!allowedEvents.includes(eventName)) {
     throw new Error(`Event name ${eventName} is not a supported event.`);
   }
-  
-  if (listener) {
-    listener.remove();
-  }
+  DeviceEventEmitter.removeListener(eventName, handler);
 };
 
 module.exports = ZebraScanner;
