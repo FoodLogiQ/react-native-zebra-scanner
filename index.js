@@ -16,7 +16,7 @@ const allowedEvents = [
   if (!allowedEvents.includes(eventName)) {
     throw new Error(`Event name ${eventName} is not a supported event.`);
   }
-  DeviceEventEmitter.addListener(eventName, handler);
+  return DeviceEventEmitter.addListener(eventName, handler);
 };
 
 /**
