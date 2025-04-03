@@ -28,7 +28,7 @@ const allowedEvents = [
   if (!allowedEvents.includes(eventName)) {
     throw new Error(`Event name ${eventName} is not a supported event.`);
   }
-  DeviceEventEmitter.removeListener(eventName, handler);
+  return DeviceEventEmitter.removeListener(eventName, handler);
 };
 
 module.exports = ZebraScanner;
